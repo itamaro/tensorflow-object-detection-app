@@ -19,3 +19,13 @@ The GPU version (requires [NVIDIA-Docker](https://github.com/NVIDIA/nvidia-docke
 docker build -t object-detection-app:gpu .
 docker run --runtime=nvidia --rm -p 8000:8000 object-detection-app:gpu
 ```
+
+Once the container is up and running, access the app on [localhost:8000](http://localhost:8000/)
+(replace `localhost` with the Docker Machine IP, if using Docker Machine).
+
+Wait for something similar to the following lines:
+
+```
+2017-12-18 18:04:07.558019: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+ * Running on http://0.0.0.0:8000/ (Press CTRL+C to quit)
+```
