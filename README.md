@@ -29,3 +29,13 @@ Wait for something similar to the following lines:
 2017-12-18 18:04:07.558019: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
  * Running on http://0.0.0.0:8000/ (Press CTRL+C to quit)
 ```
+
+## Running Pre-built Images
+
+To run pre-built images from [Docker Hub](https://hub.docker.com/r/itamarost/object-detection-app/):
+
+```
+docker run --rm -p 8000:8000 itamarost/object-detection-app:1.0-py3
+# or, using nvidia-docker
+docker run --runtime=nvidia --rm -p 8000:8000 itamarost/object-detection-app:1.0-py3-gpu
+```
