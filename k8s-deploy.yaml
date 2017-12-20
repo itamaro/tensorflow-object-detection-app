@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf-object-detection
+  labels:
+    app: tf-object-detection
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: tf-object-detection
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: tf-object-detection
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tf-object-detection
+    spec:
+      containers:
+      - name: object-detection-app
+        image: itamarost/object-detection-app:1.0-py3
+        command: ["python", "app.py"]
+        resources: {}
+        ports:
+        - containerPort: 8000
