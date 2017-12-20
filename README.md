@@ -39,3 +39,13 @@ docker run --rm -p 8000:8000 itamarost/object-detection-app:1.0-py3
 # or, using nvidia-docker
 docker run --runtime=nvidia --rm -p 8000:8000 itamarost/object-detection-app:1.0-py3-gpu
 ```
+
+## Deploy to Kubernetes
+
+To run the app on Kubernetes (assuming configured `kubectl`):
+
+```
+kubectl apply -f k8s-deploy.yaml
+```
+
+Feel free to tailor the YAML to your needs (deployed image, fronting service type, namespace, etc.).
