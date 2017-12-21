@@ -48,4 +48,10 @@ To run the app on Kubernetes (assuming configured `kubectl`):
 kubectl apply -f k8s-deploy.yaml
 ```
 
+To utilize a GPU, for Kubernetes clusters with available Nvidia GPU cards (alpha at the moment, may break due to Kubernetes API changes):
+
+```
+kubectl apply -f k8s-deploy-gpu.yaml
+```
+
 Feel free to tailor the YAML to your needs (deployed image, fronting service type, namespace, etc.).
