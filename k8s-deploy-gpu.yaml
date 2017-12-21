@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tf-object-detection-gpu
+  labels:
+    app: tf-object-detection
+    accelerator: gpu
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: tf-object-detection
+    accelerator: gpu
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: tf-object-detection-gpu
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: tf-object-detection
+        accelerator: gpu
+    spec:
+      containers:
+      - name: object-detection-app
+        image: itamarost/object-detection-app:1.0-py3-gpu
+        command: ["python", "app.py"]
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        ports:
+        - containerPort: 8000
